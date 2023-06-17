@@ -13,9 +13,10 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className='shadow-lg rounded-3xl border  p-3 flex flex-col text-indigo-900'
+      className='shadow-lg rounded-3xl border  p-3 flex flex-col text-indigo-900 relative'
       key={product._id}
     >
+      {pathname.includes("cart") && (<p className="grid place-items-center bg-indigo-500 text-white h-8 w-8 rounded-full absolute top-0 right-0">{product.quantity}</p>)}
       <div className='h-52 w-52 mx-auto'>
         <img src={product.image} alt={product.model} />
       </div>
@@ -33,7 +34,7 @@ const ProductCard = ({ product }) => {
           Add to cart
         </button>)}
 
-        {pathname.includes("cart") && (<button onClick={() => dispatch(RemoveToCart(product))}  className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold flex justify-between '>
+        {pathname.includes("cart") && (<button onClick={() => dispatch(RemoveToCart(product))}  className='bg-red-500 rounded-full py-1 px-2 flex-1 text-white text-bold flex justify-between '>
           <p>Remove</p>
           <MdDelete className="mt-1"/>
         </button>)}
